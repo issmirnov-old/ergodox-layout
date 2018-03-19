@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "ergodox_ez.h"
 #include "debug.h"
 #include "action_layer.h"
@@ -22,10 +21,49 @@ LEADER_EXTERNS();
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  // layer 0
-  [BASE] = KEYMAP(KC_ESCAPE,KC_1,KC_2,KC_3,KC_4,KC_5,KC_EXLM,KC_SLASH,KC_Q,KC_W,KC_E,KC_R,KC_T,KC_ASTR,KC_TAB,KC_A,KC_S,KC_D,KC_F,KC_G,OSM(MOD_LSFT),KC_Z,KC_X,KC_C,KC_V,KC_B,KC_SLASH,KC_LCTL,LSFT(KC_LGUI),LSFT(KC_LALT),KC_LALT,OSM(MOD_LGUI),KC_NO,KC_LEAD,KC_NO,KC_SPACE,KC_BSPACE,KC_NO,
+/* Keymap 0: Base Layer
+ *
+ * ,------------------------------------------------------.           ,-------------------------------------------------------.
+ * | Escape    |  1   |  2   |  3   |   4   |   5  | !    |           |  =   |   6  |   7  |   8  |   9   |   0   |    _      |
+ * |-----------+------+------+------+-------+-------------|           |------+------+------+------+-------+-------+-----------|
+ * |      /    |   Q  |   W  |   E  |   R   |   T  |      |           |      |   Y  |   U  |   I  |   O   |   P   |    ~      |
+ * |-----------+------+------+------+-------+------|   *  |           |  +   |------+------+------+-------+-------+-----------|
+ * |    Tab    |   A  |   S  |   D  |   F   |   G  |------|           |------|   H  |   J  |   K  |   L   | TO(1) |    "      |
+ * |-----------+------+------+------+-------+------|      |           |      |------+------+------+-------+-------+-----------|
+ * | OSM(SHIFT)|   Z  |   X  |   C  |   V   |   B  |  /   |           |   -  |   N  |   M  |   .  |   ,   | TO(2) |    '      |
+ * `-----------+------+------+------+-------+-------------'           `-------------+------+------+-------+-------+-----------'
+ *     | CTRL  | ⇧⌘  |  ⇧⎇  |  ⎇  |OSM(⌘)|                                       |  Esc | Ctrl |⇧(Ctrl) | LEAD |   ⌘  |
+ *     `------------------------------------'                                       `------------------------------------'
+ *                                         ,-------------.           ,-------------.
+ *                                         |      |      |           |  ←   |   →  |
+ *                                  ,------|------|------|           |------+------+------.
+ *                                  |      |      |      |           |  ↑   |      |      |
+ *                                  |  ⎵   | ⌫  |------|           |------|  Tab |   ⏎  |
+ *                                  |      |      |      |           |  ↓   |      |      |
+ *                                  `--------------------'           `--------------------'
+ */
+  [BASE] = KEYMAP(
+// left hand
+KC_ESCAPE,      KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_EXLM,
+KC_SLASH,       KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_ASTR,
+KC_TAB,         KC_A,   KC_S,   KC_D,   KC_F,   KC_G,
+OSM(MOD_LSFT),  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_SLASH,
+KC_LCTL, LSFT(KC_LGUI), LSFT(KC_LALT),  KC_LALT,    OSM(MOD_LGUI),
+                                        KC_NO,  KC_LEAD,
+                                                KC_NO,
+                        KC_SPACE,   KC_BSPACE,  KC_NO,
 
-  KC_EQUAL,KC_6,KC_7,KC_8,KC_9,KC_0,KC_UNDS,KC_PLUS,KC_Y,KC_U,KC_I,KC_O,KC_P,KC_TILD,KC_H,KC_J,KC_K,KC_L,TG(1),KC_DQUO,KC_MINUS,KC_N,KC_M,KC_DOT,KC_COMMA,TG(2),KC_QUOTE,KC_ESCAPE,KC_LCTL,LSFT(KC_LCTL),KC_LEAD,KC_LGUI,KC_LEFT,KC_RIGHT,KC_UP,KC_DOWN,KC_TAB,KC_ENTER),
+// right hand
+KC_EQUAL,   KC_6,     KC_7,   KC_8,   KC_9,     KC_0,   KC_UNDS,
+KC_PLUS,    KC_Y,     KC_U,   KC_I,   KC_O,     KC_P,   KC_TILD,
+            KC_H,     KC_J,   KC_K,   KC_L,     TG(1),  KC_DQUO,
+KC_MINUS,   KC_N,     KC_M,   KC_DOT, KC_COMMA, TG(2),  KC_QUOTE,
+KC_ESCAPE,  KC_LCTL,  LSFT(KC_LCTL),  KC_LEAD,  KC_LGUI,
+
+KC_LEFT,  KC_RIGHT,
+KC_UP,
+KC_DOWN,  KC_TAB, KC_ENTER
+),
 
   // layer 1
   [SYMB] = KEYMAP(KC_ESCAPE,KC_F1,KC_F2,KC_F3,KC_F4,KC_F5,KC_F6,KC_TAB,KC_MINUS,KC_AT,KC_LCBR,KC_RCBR,KC_GRAVE,KC_ASTR,KC_NO,KC_CIRC,KC_UNDS,KC_LPRN,KC_RPRN,KC_DLR,KC_NO,KC_LABK,KC_RABK,KC_LBRACKET,KC_RBRACKET,KC_TILD,KC_SLASH,TO(0),KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_SPACE,KC_BSPACE,KC_NO,
