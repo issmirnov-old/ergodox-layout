@@ -1,0 +1,37 @@
+#!/bin/bash
+set -e
+
+cmd_smi () {
+    echo "launching wiki"
+    chrome-cli open "https://smirnov.wiki" > /dev/null
+}
+
+cmd_appsel_helper () {
+    rofi -show window
+}
+
+cmd_reflash () {
+    teensy_loader_cli -mmcu=atmega32u4 -w -v ergodox_ez_ismirnov.hex || true
+}
+
+cmd_help () {
+    cat <<EOF
+hid_listen | ./ergo
+EOF
+}
+
+while read l; do
+    case "$l" in
+        "CMD:"*)
+            ;;
+        *)
+            continue
+            ;;
+    esac
+
+    cmd="$(echo $l | cut -d: -f2-)"
+    echo "Got command: ${cmd}"
+    if type cmd_${cmd} >/dev/null 2>&1; then
+        cmd_${cmd}
+    fi
+done
