@@ -154,7 +154,8 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 };
 
 
-// Runs constantly in the background, in a loop.
+// Runs constantly in the background, in a loop every 100ms or so.
+// Best used for LED status output triggered when user isn't actively typing.
 void matrix_scan_user(void) {
   uint8_t layer = biton32(layer_state);
   if (layer == 0) {
@@ -212,10 +213,13 @@ void matrix_scan_user(void) {
     }
   }
 }
+
+// called by QMK during key processing before the actual key event is handled. Useful for macros.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
+// only runs when when the layer is changed, good for updating LED's and clearing sticky state
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
     ergodox_board_led_off();
