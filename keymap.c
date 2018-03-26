@@ -104,7 +104,7 @@ KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  RESET,
 KC_NO,  KC_MINUS, KC_7,   KC_8,   KC_9,   KC_NO,
         KC_NO,    KC_0,   KC_4,   KC_5,   KC_6,   TO(1),  KC_NO,
 KC_NO,  KC_DOT,   KC_1,   KC_2,   KC_3,   TO(0),  KC_NO,
-KC_NO,  KC_NO,    KC_NO,  TO(3),  KC_NO,
+KC_0,  KC_NO,    KC_NO,  TO(3),  KC_NO,
 
 KC_LEFT,  KC_RIGHT,
 KC_UP,
