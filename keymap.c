@@ -91,20 +91,20 @@ KC_DOWN,  KC_TAB, KC_ENTER),
   // layer 2
   [NUMP] = KEYMAP(
 KC_NO,  KC_NO,  KC_NO,          KC_NO,                KC_NO,                KC_NO,    KC_NO,
-KC_NO,  KC_NO,  KC_F15,         KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  KC_NO,    KC_NO,
+KC_NO,  KC_NO,  KC_F15,         KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  KC_NO,    KC_ASTR,
 KC_NO,  KC_NO,  KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP,      KC_NO,
-KC_NO,  KC_NO,  KC_F14,         KC_PAUSE,             KC_MEDIA_PLAY_PAUSE,  KC_NO,    KC_NO,
+KC_NO,  KC_NO,  KC_F14,         KC_PAUSE,             KC_MEDIA_PLAY_PAUSE,  KC_NO,    KC_SLASH,
 TO(0),  KC_NO,  KC_NO,          KC_NO,                KC_NO,
 
   KC_NO,      KC_NO,
   KC_NO,
 KC_SPACE, KC_BSPACE,
 
-KC_NO,  KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  RESET,
-KC_NO,  KC_MINUS, KC_7,   KC_8,   KC_9,   KC_NO,
-        KC_NO,    KC_0,   KC_4,   KC_5,   KC_6,   TO(1),  KC_NO,
-KC_NO,  KC_DOT,   KC_1,   KC_2,   KC_3,   TO(0),  KC_NO,
-KC_0,  KC_NO,    KC_NO,  TO(3),  KC_NO,
+KC_EQUAL, KC_NO,    KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,  RESET,
+KC_PLUS,  KC_COMMA, KC_7,   KC_8,   KC_9,   KC_NO,
+          KC_NO,    KC_0,   KC_4,   KC_5,   KC_6,   TO(1),  KC_NO,
+KC_MINUS, KC_DOT,   KC_1,   KC_2,   KC_3,   TO(0),  KC_NO,
+          KC_0,  KC_NO,    KC_NO,  TO(3),  KC_NO,
 
 KC_LEFT,  KC_RIGHT,
 KC_UP,
