@@ -21,6 +21,7 @@ LEADER_EXTERNS();
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
+// Glyphs: http://graphemica.com/
 /* Keymap 0: Base Layer
  *
  * ,------------------------------------------------------.           ,-------------------------------------------------------.
@@ -38,8 +39,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                         |      |      |           |  ←   |   →  |
  *                                  ,------|------|------|           |------+------+------.
  *                                  |      |      |      |           |  ↑   |      |      |
- *                                  |  ⎵   | ⌫  |------|           |------|  Tab |   ⏎  |
- *                                  |      |      |      |           |  ↓   |      |      |
+ *                                  |  ⎵   | ⌫   |------|           |------|  Tab |  ⏎  |
+ *                                  |      |      |  ⌦  |           |  ↓   |      |      |
  *                                  `--------------------'           `--------------------'
  */
   [BASE] = KEYMAP(
@@ -51,7 +52,7 @@ OSM(MOD_LSFT),  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_SLASH,
 KC_LCTL, LSFT(KC_LGUI), LSFT(KC_LALT),  KC_LALT,   KC_LGUI,
                                         KC_NO,  KC_LEAD,
                                                 KC_NO,
-                        KC_SPACE,   KC_BSPACE,  KC_NO,
+                        KC_SPACE,   KC_BSPACE,  KC_DEL,
 
 // right hand
 KC_EQUAL,   KC_6,     KC_7,   KC_8,   KC_9,     KC_0,   KC_UNDS,
