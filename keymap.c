@@ -93,7 +93,7 @@ KC_DOWN,  KC_TAB, KC_ENTER),
   [NUMP] = KEYMAP(
 KC_NO,  KC_NO,  KC_NO,          KC_NO,                KC_NO,                KC_NO,    KC_NO,
 KC_NO,  KC_NO,  KC_F15,         KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  KC_NO,    KC_ASTR,
-KC_NO,  KC_NO,  KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP,      KC_NO,
+KC_TAB,  KC_NO,  KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP,      KC_NO,
 KC_NO,  KC_NO,  KC_F14,         KC_PAUSE,             KC_MEDIA_PLAY_PAUSE,  KC_NO,    KC_SLASH,
 TO(0),  KC_NO,  KC_NO,          KC_NO,                KC_NO,
 
