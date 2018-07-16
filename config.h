@@ -1,6 +1,13 @@
+// Reference: https://beta.docs.qmk.fm/reference/config-options
+// and https://github.com/qmk/qmk_firmware/blob/master/docs/config_options.md
 #include QMK_KEYBOARD_CONFIG_H
 
-// See https://github.com/qmk/qmk_firmware/blob/master/docs/config_options.md for a full reference.
+// Allows sending more than one key per scan. Useful for chords.
+#define QMK_KEYS_PER_SCAN 4
+
+// stores the layer a key press came from so the same layer is used when the
+// key is released, regardless of which layers are enabled
+#define PREVENT_STUCK_MODIFIERS
 
 // how long before the leader key times out, if there's no valid sequence
 #undef LEADER_TIMEOUT
@@ -23,8 +30,10 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 150
 
-// makes tap and hold keys work better for fast typers who don't want tapping term set above 500
+// makes tap and hold keys work better for fast typers who don't want
+// tapping term set above 500
 #define PERMISSIVE_HOLD
 
-// tap anyway, even after TAPPING_TERM, if there was no other key interruption between press and release
+// tap anyway, even after TAPPING_TERM, if there was no other key
+// interruption between press and release
 #define RETRO_TAPPING
