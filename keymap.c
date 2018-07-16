@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                  |      |      |  ⌦  |           |  ↓   |      |      |
  *                                  `--------------------'           `--------------------'
  */
-  [BASE] = KEYMAP(
+  [BASE] = LAYOUT_ergodox(
 // left hand
 KC_ESCAPE,      KC_1,   KC_2,   KC_3,   KC_4,   KC_5,   KC_EXLM,
 KC_SLASH,       KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_ASTR,
@@ -67,7 +67,7 @@ KC_DOWN,  KC_TAB, KC_ENTER
 ),
 
   // layer 1
-  [SYMB] = KEYMAP(
+  [SYMB] = LAYOUT_ergodox(
 KC_ESCAPE,  KC_F1,    KC_F2,    KC_F3,        KC_F4,        KC_F5,    KC_F6,
 KC_NO,      KC_MINUS, KC_AT,    KC_LCBR,      KC_RCBR,      KC_GRAVE, KC_ASTR,
 KC_TAB,     KC_CIRC,  KC_UNDS,  KC_LPRN,      KC_RPRN,      KC_DLR,
@@ -90,7 +90,7 @@ KC_LEFT,  KC_RIGHT,
 KC_DOWN,  KC_TAB, KC_ENTER),
 
   // layer 2
-  [NUMP] = KEYMAP(
+  [NUMP] = LAYOUT_ergodox(
 KC_NO,  KC_NO,  KC_NO,          KC_NO,                KC_NO,                KC_NO,    KC_NO,
 KC_NO,  KC_NO,  KC_F15,         KC_MEDIA_PREV_TRACK,  KC_MEDIA_NEXT_TRACK,  KC_NO,    KC_ASTR,
 KC_TAB,  KC_NO,  KC_AUDIO_MUTE,  KC_AUDIO_VOL_DOWN,    KC_AUDIO_VOL_UP,      KC_NO,
