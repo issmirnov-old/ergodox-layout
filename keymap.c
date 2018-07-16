@@ -113,7 +113,7 @@ KC_DOWN,  KC_TAB, KC_ENTER
 ),
 
   // layer 3
-  [OVERWATCH] = KEYMAP(
+  [OVERWATCH] = LAYOUT_ergodox(
 KC_ESCAPE,   KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,    TO(0),
 KC_NO,      KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,     KC_NO,
 KC_TAB,     KC_A,   KC_S,   KC_D,   KC_F,   KC_P,
