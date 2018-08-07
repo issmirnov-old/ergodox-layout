@@ -72,22 +72,22 @@ KC_ESCAPE,  KC_F1,    KC_F2,    KC_F3,        KC_F4,        KC_F5,    KC_F6,
 KC_NO,      KC_MINUS, KC_AT,    KC_LCBR,      KC_RCBR,      KC_GRAVE, KC_ASTR,
 KC_TAB,     KC_CIRC,  KC_UNDS,  KC_LPRN,      KC_RPRN,      KC_DLR,
 KC_LSHIFT,  KC_LABK,  KC_RABK,  KC_LBRACKET,  KC_RBRACKET,  KC_TILD,  KC_SLASH,
-KC_LCTL,    LSFT(KC_LGUI), LSFT(KC_LALT),  KC_LALT,      KC_LGUI,
+KC_LCTL,    LSFT(KC_LGUI), LSFT(KC_LALT),     KC_LALT,      KC_LGUI,
 
-  KC_NO,  TO(0),
-  KC_NO,
-KC_SPACE,
-KC_BSPACE,  KC_NO,
+                                              KC_NO,        KC_NO,
+                                                            KC_NO,
+                                    KC_SPACE, KC_BSPACE,    KC_DEL,
 
 KC_F7,    KC_F8,    KC_F9,    KC_F10,     KC_F11,         KC_F12,     KC_NO,
 KC_PLUS,  KC_ASTR,  KC_EXLM,  KC_PIPE,    KC_PERC,        KC_PLUS,    KC_NO,
-          KC_HASH,  KC_EQUAL, KC_COLN,    KC_SCOLON,  KC_TRANSPARENT, KC_NO,
-KC_MINUS, KC_AMPR,  KC_QUES,  KC_SLASH,   KC_BSLASH,      TG(2),      KC_NO,
+          KC_HASH,  KC_EQUAL, KC_COLN,    KC_SCOLON,  KC_TRANSPARENT, KC_DQUO,
+KC_MINUS, KC_AMPR,  KC_QUES,  KC_SLASH,   KC_BSLASH,      TG(2),      KC_QUOTE,
 KC_ESCAPE,KC_COLN,  KC_PERC,    KC_NO,      KC_NO,
 
 KC_LEFT,  KC_RIGHT,
-  KC_UP,
-KC_DOWN,  KC_TAB, KC_ENTER),
+KC_UP,
+KC_DOWN,  KC_TAB, KC_ENTER
+),
 
   // layer 2
   [NUMP] = LAYOUT_ergodox(
