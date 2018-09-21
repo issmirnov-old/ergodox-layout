@@ -16,9 +16,6 @@ enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE,
 };
 
-// Enable leader support.
-LEADER_EXTERNS();
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // Glyphs: http://graphemica.com/
@@ -33,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |-----------+------+------+------+-------+------|      |           |      |------+------+------+-------+-------+-----------|
  * | OSM(SHIFT)|   Z  |   X  |   C  |   V   |   B  |  /   |           |   -  |   N  |   M  |   .  |   ,   | TO(2) |    '      |
  * `-----------+------+------+------+-------+-------------'           `-------------+------+------+-------+-------+-----------'
- *     | CTRL  | ⇧⌘  |  ⇧⎇  |  ⎇  |OSM(⌘)|                                       |  Esc | Ctrl |⇧(Ctrl) | LEAD |   ⌘  |
+ *     | CTRL  | ⇧⌘  |  ⇧⎇  |  ⎇  |OSM(⌘)|                                          |  Esc | Ctrl |⇧(Ctrl) | Alt  |   ⌘  |
  *     `------------------------------------'                                       `------------------------------------'
  *                                         ,-------------.           ,-------------.
  *                                         |      |      |           |  ←   |   →  |
@@ -50,7 +47,7 @@ KC_SLASH,       KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_ASTR,
 KC_TAB,         KC_A,   KC_S,   KC_D,   KC_F,   KC_G,
 OSM(MOD_LSFT),  KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_SLASH,
 KC_LCTL, LSFT(KC_LGUI), LSFT(KC_LALT),  KC_LALT,   KC_LGUI,
-                                        KC_NO,  KC_LEAD,
+                                        KC_NO,  KC_NO,
                                                 KC_NO,
                         KC_SPACE,   KC_BSPACE,  KC_DEL,
 
@@ -59,7 +56,7 @@ KC_EQUAL,   KC_6,     KC_7,   KC_8,   KC_9,     KC_0,   KC_UNDS,
 KC_PLUS,    KC_Y,     KC_U,   KC_I,   KC_O,     KC_P,   KC_TILD,
             KC_H,     KC_J,   KC_K,   KC_L,     TG(1),  KC_DQUO,
 KC_MINUS,   KC_N,     KC_M,   KC_DOT, KC_COMMA, TG(2),  KC_QUOTE,
-KC_ESCAPE,  KC_COLN,  KC_PERC,  KC_LEAD,  KC_LGUI,
+KC_ESCAPE,  KC_COLN,  KC_PERC,  KC_NO,  KC_LGUI,
 
 KC_LEFT,  KC_RIGHT,
 KC_UP,
@@ -199,19 +196,6 @@ void matrix_scan_user(void) {
               ergodox_right_led_3_set (LED_BRIGHTNESS_HI);
               ergodox_right_led_3_off ();
       }
-  }
-  LEADER_DICTIONARY() {
-    leading = false;
-    leader_end ();
-    SEQ_ONE_KEY (KC_B) {
-      uprintf("CMD:test\n");
-    }
-    SEQ_ONE_KEY (KC_S) {
-      uprintf("CMD:smi\n");
-    }
-    SEQ_ONE_KEY (KC_V) {
-      uprintf(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION"\n" );
-    }
   }
 }
 
