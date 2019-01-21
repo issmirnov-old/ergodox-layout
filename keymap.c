@@ -14,6 +14,7 @@ enum  {
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE,
+  TAP_TOG_LAYER,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -54,7 +55,7 @@ KC_LCTL, LSFT(KC_LGUI), LSFT(KC_LALT),  KC_LALT,   KC_LGUI,
 // right hand
 KC_EQUAL,   KC_6,     KC_7,   KC_8,   KC_9,     KC_0,   KC_UNDS,
 KC_PLUS,    KC_Y,     KC_U,   KC_I,   KC_O,     KC_P,   KC_LCTL,
-            KC_H,     KC_J,   KC_K,   KC_L,     TG(1),  KC_DQUO,
+            KC_H,     KC_J,   KC_K,   KC_L,     TAP_TOG_LAYER,  KC_DQUO,
 KC_MINUS,   KC_N,     KC_M,   KC_DOT, KC_COMMA, TG(2),  KC_QUOTE,
 KC_ESCAPE,  KC_COLN,  KC_PERC,  KC_NO,  KC_LGUI,
 
@@ -200,7 +201,61 @@ void matrix_scan_user(void) {
 }
 
 // called by QMK during key processing before the actual key event is handled. Useful for macros.
+
+// TAP_TOG_LAYER magic
+bool tap_tog_layer_other_key_pressed = false; // set to true if any key pressed while TAP_TOG_LAYER held down
+bool tap_tog_layer_toggled_on = false; // will become true if no keys are pressed while TTL held down
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  switch (keycode) {
+
+    case TAP_TOG_LAYER:
+
+      // press
+      if (record->event.pressed) {
+
+        // TTL has already been pressed and we are toggled into that layer
+        // so now we need to leave
+        if(tap_tog_layer_toggled_on) {
+          layer_clear();
+          tap_tog_layer_toggled_on = false;
+        }
+
+        // this means we're in our default layer
+        // so switch the layer immediately
+        // whether we'll switch back when it's released depends on if a button gets pressed while this is held down
+        else {
+          // switch layer
+          layer_on(SYMB);
+          tap_tog_layer_other_key_pressed = false; // if this becomes true before it gets released, it will act as a held modifier
+        }
+      }
+
+      // release
+      else {
+        // if it was used as a held modifier (like traditional shift)
+        if(tap_tog_layer_other_key_pressed) {
+          // switch layer back
+          layer_clear();
+        }
+        // if it was used as a toggle button
+        else {
+          // next time, it will turn layer off
+          tap_tog_layer_toggled_on = true;
+        }
+
+      }
+
+      return false;
+      break;
+
+    default:
+      tap_tog_layer_other_key_pressed = true; // always set this to true, TAP_TOG_LAYER handlers will handle interpreting this
+      break;
+
+  }
+
   return true;
 }
 
