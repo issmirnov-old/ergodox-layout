@@ -14,6 +14,7 @@ enum  {
 
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE,
+  TAP_TOG_LAYER,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -54,7 +55,7 @@ KC_LCTL, LSFT(KC_LGUI), LSFT(KC_LALT),  KC_LALT,   KC_LGUI,
 // right hand
 KC_EQUAL,   KC_6,     KC_7,   KC_8,   KC_9,     KC_0,   KC_ESCAPE,
 KC_PLUS,    KC_Y,     KC_U,   KC_I,   KC_O,     KC_P,   LGUI(KC_D),
-            KC_H,     KC_J,   KC_K,   KC_L,     TG(1),  KC_DQUO,
+            KC_H,     KC_J,   KC_K,   KC_L,     TAP_TOG_LAYER,  KC_DQUO,
 KC_MINUS,   KC_N,     KC_M,   KC_DOT, KC_COMMA, TG(2),  KC_QUOTE,
 KC_ESCAPE,  KC_COLN,  KC_PERC,  KC_NO,  KC_LGUI,
 
@@ -152,6 +153,75 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
 };
 
 
+
+
+// TAP_TOG_LAYER magic
+bool tap_tog_layer_other_key_pressed = false; // set to true if any key pressed while TAP_TOG_LAYER held down
+bool tap_tog_layer_toggled_on = false; // will become true if no keys are pressed while TTL held down
+uint32_t tap_tog_count = 0; // number of presses on TAP_TOG_LAYER button.
+
+// called by QMK during key processing before the actual key event is handled. Useful for macros.
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  switch (keycode) {
+
+    case TAP_TOG_LAYER:
+      tap_tog_count++;
+      // press
+      if (record->event.pressed) {
+
+        // TTL has already been pressed and we are toggled into that layer
+        // so now we need to leave
+        if(tap_tog_layer_toggled_on) {
+          layer_clear();
+          tap_tog_layer_toggled_on = false;
+        }
+
+        // this means we're in our default layer
+        // so switch the layer immediately
+        // whether we'll switch back when it's released depends on if a button gets pressed while this is held down
+        else {
+          // switch layer
+          layer_on(SYMB);
+          tap_tog_layer_other_key_pressed = false; // if this becomes true before it gets released, it will act as a held modifier
+        }
+      }
+
+      // release
+      else {
+        // if it was used as a held modifier (like traditional shift)
+        if(tap_tog_layer_other_key_pressed) {
+          // switch layer back
+          layer_clear();
+        }
+        // if it was used as a toggle button
+        else {
+          // next time, it will turn layer off
+          tap_tog_layer_toggled_on = true;
+          uprintln("set tog to true");
+
+          // If it's been tapped twice, reset the toggle flag.
+          // Otherwise, we get stuck oscillating between this code block and the
+          // pressed && TTL_toggled_on block.
+          if (tap_tog_count == 4 ) {
+            tap_tog_count = 0;
+            tap_tog_layer_toggled_on = false;
+          }
+        }
+
+      }
+      return false;
+      break;
+
+    default:
+      tap_tog_count = 0; // reset counter.
+      tap_tog_layer_other_key_pressed = true; // always set this to true, TAP_TOG_LAYER handlers will handle interpreting this
+      uprintln("okp: true");
+      break;
+  }
+  return true;
+}
+
 // Runs constantly in the background, in a loop every 100ms or so.
 // Best used for LED status output triggered when user isn't actively typing.
 void matrix_scan_user(void) {
@@ -199,18 +269,15 @@ void matrix_scan_user(void) {
   }
 }
 
-// called by QMK during key processing before the actual key event is handled. Useful for macros.
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  return true;
-}
-
 // only runs when when the layer is changed, good for updating LED's and clearing sticky state
 uint32_t layer_state_set_user(uint32_t state) {
     uint8_t layer = biton32(state);
+
     ergodox_board_led_off();
     ergodox_right_led_1_off();
     ergodox_right_led_2_off();
     ergodox_right_led_3_off();
+
     switch (layer) {
       case 0:
         break;
