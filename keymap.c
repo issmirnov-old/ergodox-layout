@@ -203,7 +203,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           // If it's been tapped twice, reset the toggle flag.
           // Otherwise, we get stuck oscillating between this code block and the
           // pressed && TTL_toggled_on block.
-          if (tap_tog_count == 4 ) {
+          if (tap_tog_count >= 4 ) {
             tap_tog_count = 0;
             tap_tog_layer_toggled_on = false;
           }
