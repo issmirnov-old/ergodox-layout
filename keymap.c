@@ -57,7 +57,7 @@ KC_EQUAL,   KC_6,     KC_7,   KC_8,   KC_9,     KC_0,   KC_ESCAPE,
 KC_PLUS,    KC_Y,     KC_U,   KC_I,   KC_O,     KC_P,   LGUI(KC_D),
             KC_H,     KC_J,   KC_K,   KC_L,     TAP_TOG_LAYER,  KC_DQUO,
 KC_MINUS,   KC_N,     KC_M,   KC_DOT, KC_COMMA, TG(2),  KC_QUOTE,
-KC_ESCAPE,  KC_COLN,  KC_PERC,  KC_NO,  KC_LGUI,
+KC_ESCAPE,  KC_COLN,  KC_PERC,  KC_NO,  LGUI(KC_L),
 
 KC_LEFT,  KC_RIGHT,
 KC_UP,
