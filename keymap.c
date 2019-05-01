@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,------------------------------------------------------.           ,-------------------------------------------------------.
  * | Escape    |  1   |  2   |  3   |   4   |   5  | !    |           |  =   |   6  |   7  |   8  |   9   |   0   |  Escape   |
  * |-----------+------+------+------+-------+-------------|           |------+------+------+------+-------+-------+-----------|
- * |      /    |   Q  |   W  |   E  |   R   |   T  |      |           |      |   Y  |   U  |   I  |   O   |   P   |  GUI(D)   |
+ * |      /    |   Q  |   W  |   E  |   R   |   T  |      |           |      |   Y  |   U  |   I  |   O   |   P   |  GUI(SPC) |
  * |-----------+------+------+------+-------+------|   *  |           |  +   |------+------+------+-------+-------+-----------|
  * |    Tab    |   A  |   S  |   D  |   F   |   G  |------|           |------|   H  |   J  |   K  |   L   | TO(1) |    "      |
  * |-----------+------+------+------+-------+------|      |           |      |------+------+------+-------+-------+-----------|
@@ -54,7 +54,7 @@ KC_LCTL, LSFT(KC_LGUI), LSFT(KC_LALT),  KC_LALT,   KC_LGUI,
 
 // right hand
 KC_EQUAL,   KC_6,     KC_7,   KC_8,   KC_9,     KC_0,   KC_ESCAPE,
-KC_PLUS,    KC_Y,     KC_U,   KC_I,   KC_O,     KC_P,   LGUI(KC_D),
+KC_PLUS,    KC_Y,     KC_U,   KC_I,   KC_O,     KC_P,   LGUI(KC_SPACE),
             KC_H,     KC_J,   KC_K,   KC_L,     TAP_TOG_LAYER,  KC_DQUO,
 KC_MINUS,   KC_N,     KC_M,   KC_DOT, KC_COMMA, TG(2),  KC_QUOTE,
 KC_ESCAPE,  KC_COLN,  KC_PERC,  KC_NO,  LGUI(KC_L),
