@@ -89,11 +89,11 @@ KC_DOWN,  KC_TAB, KC_ENTER
 
   // layer 2
   [NUMP] = LAYOUT_ergodox(
-KC_NO,  KC_NO,    KC_NO,     KC_NO,                KC_NO,           KC_NO,                  KC_NO,
-KC_NO,  KC_NO,    KC_UP,     KC_NO,         KC_MEDIA_PREV_TRACK,    KC_MEDIA_NEXT_TRACK,    KC_ASTR,
-KC_TAB, KC_LEFT,  KC_DOWN,   KC_RIGHT,      KC_MEDIA_PLAY_PAUSE,    KC_NO,
-KC_NO,  KC_NO,    KC_NO,     KC_NO,         KC_AUDIO_VOL_DOWN,      KC_AUDIO_VOL_UP,        KC_SLASH,
-TO(0),  KC_NO,    KC_NO,     KC_NO,                KC_NO,
+KC_NO  , KC_NO , KC_NO         , KC_NO         , KC_NO               , KC_NO               , KC_NO    ,
+KC_NO  , KC_NO , KC_NO         , LGUI(KC_UP)   , KC_MEDIA_PREV_TRACK , KC_MEDIA_NEXT_TRACK , KC_ASTR  ,
+KC_TAB , KC_NO , LGUI(KC_LEFT) , LGUI(KC_DOWN) , LGUI(KC_RIGHT)      , KC_MEDIA_PLAY_PAUSE ,
+KC_NO  , KC_NO , KC_NO         , KC_NO         , KC_AUDIO_VOL_DOWN   , KC_AUDIO_VOL_UP     , KC_SLASH ,
+TO(0)  , KC_NO , KC_NO         , KC_NO         , KC_NO               ,
 
                     KC_NO,      KC_NO,
                                 KC_NO,
@@ -107,7 +107,7 @@ KC_MINUS, KC_DOT,   KC_1,   KC_2,   KC_3,   TO(0),  KC_NO,
 
 KC_LEFT,  KC_RIGHT,
 KC_UP,
-KC_DOWN,  KC_TAB, KC_ENTER
+KC_DOWN,  KC_LALT, KC_LSHIFT
 ),
 
   // layer 3
