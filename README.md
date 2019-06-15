@@ -1,4 +1,4 @@
-# Ivan's Ergodox Config
+# **THIS REPO IS DEPRECATED. SEE NEW LOCATION: https://github.com/issmirnov/qmk-keebs**
 
 
 ## Details about the layout
